@@ -1,0 +1,11 @@
+/bitrix/
+/desktop_app/
+/.idea/
+/upload/
+/.access.php
+/.htaccess
+/404.php
+/desktop.ini
+/favicon.ico
+/index.php
+/urlrewrite.php
