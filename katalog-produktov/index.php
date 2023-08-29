@@ -1,63 +1,62 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Каталог продуктов");
-?><table border="1" cellpadding="1" cellspacing="1" style="display: flex; justify-content: center; align-items: center;">
-<tbody>
-<tr>
-	<td>
-		<h2><span style="font-family: Verdana; font-size: 16pt;">Каталог продуктов</span></h2>
- <span style="font-family: Verdana; font-size: 26pt;"> </span>
-	</td>
-</tr>
-<tr>
-	<td>
- <span style="font-family: Verdana; font-size: 16pt;">
-		&nbsp;</span><?$APPLICATION->IncludeComponent(
-	"bitrix:catalog.sections.top",
-	"",
+?><span style="font-family: Verdana; font-size: 16pt;"> </span>
+<h3><?$APPLICATION->IncludeComponent(
+	"bitrix:news.list",
+	"katalog-produktov",
 	Array(
-		"ACTION_VARIABLE" => "action",
-		"BASKET_URL" => "/personal/basket.php",
+		"ACTIVE_DATE_FORMAT" => "d.m.Y",
+		"ADD_SECTIONS_CHAIN" => "Y",
+		"AJAX_MODE" => "N",
+		"AJAX_OPTION_ADDITIONAL" => "",
+		"AJAX_OPTION_HISTORY" => "N",
+		"AJAX_OPTION_JUMP" => "N",
+		"AJAX_OPTION_STYLE" => "Y",
 		"CACHE_FILTER" => "N",
 		"CACHE_GROUPS" => "Y",
 		"CACHE_TIME" => "36000000",
 		"CACHE_TYPE" => "A",
-		"CONVERT_CURRENCY" => "N",
+		"CHECK_DATES" => "Y",
 		"DETAIL_URL" => "",
-		"DISPLAY_COMPARE" => "N",
-		"ELEMENT_COUNT" => "9",
-		"ELEMENT_SORT_FIELD" => "sort",
-		"ELEMENT_SORT_FIELD2" => "id",
-		"ELEMENT_SORT_ORDER" => "asc",
-		"ELEMENT_SORT_ORDER2" => "desc",
-		"FILTER_NAME" => "arrFilter",
-		"HIDE_NOT_AVAILABLE" => "N",
-		"IBLOCK_ID" => "8",
+		"DISPLAY_BOTTOM_PAGER" => "Y",
+		"DISPLAY_DATE" => "Y",
+		"DISPLAY_NAME" => "Y",
+		"DISPLAY_PICTURE" => "Y",
+		"DISPLAY_PREVIEW_TEXT" => "Y",
+		"DISPLAY_TOP_PAGER" => "N",
+		"FIELD_CODE" => array("",""),
+		"FILTER_NAME" => "",
+		"HIDE_LINK_WHEN_NO_DETAIL" => "N",
+		"IBLOCK_ID" => "10",
 		"IBLOCK_TYPE" => "products_type",
-		"LINE_ELEMENT_COUNT" => "3",
-		"PRICE_CODE" => array(),
-		"PRICE_VAT_INCLUDE" => "Y",
-		"PRODUCT_ID_VARIABLE" => "id",
-		"PRODUCT_PROPERTIES" => array(),
-		"PRODUCT_PROPS_VARIABLE" => "prop",
-		"PRODUCT_QUANTITY_VARIABLE" => "quantity",
-		"PROPERTY_CODE" => array("WEIGHT","MEASURMENT",""),
-		"SECTION_COUNT" => "20",
-		"SECTION_FIELDS" => array("PICTURE",""),
-		"SECTION_ID_VARIABLE" => "SECTION_ID",
-		"SECTION_SORT_FIELD" => "sort",
-		"SECTION_SORT_ORDER" => "asc",
-		"SECTION_URL" => "",
-		"SECTION_USER_FIELDS" => array("",""),
-		"SHOW_PRICE_COUNT" => "1",
-		"USE_MAIN_ELEMENT_SECTION" => "N",
-		"USE_PRICE_COUNT" => "N",
-		"USE_PRODUCT_QUANTITY" => "N"
+		"INCLUDE_IBLOCK_INTO_CHAIN" => "Y",
+		"INCLUDE_SUBSECTIONS" => "Y",
+		"MESSAGE_404" => "",
+		"NEWS_COUNT" => "20",
+		"PAGER_BASE_LINK_ENABLE" => "N",
+		"PAGER_DESC_NUMBERING" => "N",
+		"PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+		"PAGER_SHOW_ALL" => "N",
+		"PAGER_SHOW_ALWAYS" => "N",
+		"PAGER_TEMPLATE" => ".default",
+		"PAGER_TITLE" => "Каталог продуктов",
+		"PARENT_SECTION" => "",
+		"PARENT_SECTION_CODE" => "",
+		"PREVIEW_TRUNCATE_LEN" => "",
+		"PROPERTY_CODE" => array("WEIGHT","MEASUREMENT",""),
+		"SET_BROWSER_TITLE" => "Y",
+		"SET_LAST_MODIFIED" => "N",
+		"SET_META_DESCRIPTION" => "Y",
+		"SET_META_KEYWORDS" => "Y",
+		"SET_STATUS_404" => "N",
+		"SET_TITLE" => "Y",
+		"SHOW_404" => "N",
+		"SORT_BY1" => "ACTIVE_FROM",
+		"SORT_BY2" => "SORT",
+		"SORT_ORDER1" => "DESC",
+		"SORT_ORDER2" => "ASC",
+		"STRICT_SECTION_CHECK" => "N"
 	)
-);?><span style="font-family: Verdana; font-size: 16pt;"> </span>
-	</td>
-</tr>
-</tbody>
-</table>
- <span style="font-family: Verdana; font-size: 16pt;"> </span>
+);?></h3>
 <h3><a href="/">Вернуться на главную &gt;&gt;&gt;</a></h3><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

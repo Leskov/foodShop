@@ -3,9 +3,9 @@
 namespace Sprint\Migration;
 
 
-class products_20230828111917 extends Version
+class products_createIB_20230829131420 extends Version
 {
-    protected $description = "Создан ИБ  Каталог продуктов, разделы и товары";
+    protected $description = "Создание Инфоблока Продукты";
 
     protected $moduleVersion = "4.2.4";
 
@@ -16,6 +16,29 @@ class products_20230828111917 extends Version
     public function up()
     {
         $helper = $this->getHelperManager();
+        $helper->Iblock()->saveIblockType(array (
+  'ID' => 'products_type',
+  'SECTIONS' => 'Y',
+  'EDIT_FILE_BEFORE' => '',
+  'EDIT_FILE_AFTER' => '',
+  'IN_RSS' => 'N',
+  'SORT' => '500',
+  'LANG' => 
+  array (
+    'ru' => 
+    array (
+      'NAME' => 'Продукция',
+      'SECTION_NAME' => 'Группа',
+      'ELEMENT_NAME' => 'Товар',
+    ),
+    'en' => 
+    array (
+      'NAME' => 'Products',
+      'SECTION_NAME' => 'Group',
+      'ELEMENT_NAME' => 'Item',
+    ),
+  ),
+));
         $iblockId = $helper->Iblock()->saveIblock(array (
   'IBLOCK_TYPE_ID' => 'products_type',
   'LID' => 
@@ -25,7 +48,7 @@ class products_20230828111917 extends Version
   'CODE' => 'products',
   'API_CODE' => NULL,
   'REST_ON' => 'N',
-  'NAME' => 'Каталог продуктов',
+  'NAME' => 'Продукты',
   'ACTIVE' => 'Y',
   'SORT' => '500',
   'LIST_PAGE_URL' => '#SITE_DIR#/products_type/index.php?ID=#IBLOCK_ID#',
@@ -391,52 +414,37 @@ class products_20230828111917 extends Version
   'FILE_TYPE' => '',
   'MULTIPLE_CNT' => '5',
   'LINK_IBLOCK_ID' => '0',
-  'WITH_DESCRIPTION' => 'Y',
+  'WITH_DESCRIPTION' => 'N',
   'SEARCHABLE' => 'N',
-  'FILTRABLE' => 'Y',
-  'IS_REQUIRED' => 'Y',
+  'FILTRABLE' => 'N',
+  'IS_REQUIRED' => 'N',
   'VERSION' => '1',
   'USER_TYPE' => NULL,
   'USER_TYPE_SETTINGS' => 'a:0:{}',
   'HINT' => '',
-  'FEATURES' => 
-  array (
-    0 => 
-    array (
-      'MODULE_ID' => 'iblock',
-      'FEATURE_ID' => 'DETAIL_PAGE_SHOW',
-      'IS_ENABLED' => 'Y',
-    ),
-    1 => 
-    array (
-      'MODULE_ID' => 'iblock',
-      'FEATURE_ID' => 'LIST_PAGE_SHOW',
-      'IS_ENABLED' => 'Y',
-    ),
-  ),
 ));
             $helper->Iblock()->saveProperty($iblockId, array (
   'NAME' => 'Единица измерения',
   'ACTIVE' => 'Y',
   'SORT' => '500',
-  'CODE' => 'MEASURMENT',
+  'CODE' => 'MEASUREMENT',
   'DEFAULT_VALUE' => '',
   'PROPERTY_TYPE' => 'L',
   'ROW_COUNT' => '1',
   'COL_COUNT' => '30',
-  'LIST_TYPE' => 'C',
+  'LIST_TYPE' => 'L',
   'MULTIPLE' => 'N',
   'XML_ID' => NULL,
   'FILE_TYPE' => '',
   'MULTIPLE_CNT' => '5',
   'LINK_IBLOCK_ID' => '0',
   'WITH_DESCRIPTION' => 'N',
-  'SEARCHABLE' => 'Y',
-  'FILTRABLE' => 'Y',
-  'IS_REQUIRED' => 'Y',
+  'SEARCHABLE' => 'N',
+  'FILTRABLE' => 'N',
+  'IS_REQUIRED' => 'N',
   'VERSION' => '1',
   'USER_TYPE' => NULL,
-  'USER_TYPE_SETTINGS' => NULL,
+  'USER_TYPE_SETTINGS' => 'a:0:{}',
   'HINT' => '',
   'VALUES' => 
   array (
@@ -445,14 +453,14 @@ class products_20230828111917 extends Version
       'VALUE' => 'г',
       'DEF' => 'N',
       'SORT' => '500',
-      'XML_ID' => 'gramm',
+      'XML_ID' => 'gram',
     ),
     1 => 
     array (
       'VALUE' => 'кг',
       'DEF' => 'N',
       'SORT' => '500',
-      'XML_ID' => 'kilogramm',
+      'XML_ID' => 'kgram',
     ),
     2 => 
     array (
@@ -473,7 +481,7 @@ class products_20230828111917 extends Version
       'VALUE' => 'шт',
       'DEF' => 'Y',
       'SORT' => '500',
-      'XML_ID' => 'shtuka',
+      'XML_ID' => 'shtuk',
     ),
   ),
   'FEATURES' => 
@@ -482,13 +490,13 @@ class products_20230828111917 extends Version
     array (
       'MODULE_ID' => 'iblock',
       'FEATURE_ID' => 'DETAIL_PAGE_SHOW',
-      'IS_ENABLED' => 'Y',
+      'IS_ENABLED' => 'N',
     ),
     1 => 
     array (
       'MODULE_ID' => 'iblock',
       'FEATURE_ID' => 'LIST_PAGE_SHOW',
-      'IS_ENABLED' => 'Y',
+      'IS_ENABLED' => 'N',
     ),
   ),
 ));
@@ -497,13 +505,15 @@ class products_20230828111917 extends Version
 
     public function down()
     {
-        $helper = $this->getHelperManager();
-        $ok = $helper->Iblock()->deleteIblockIfExists('products');
+        {
+            $helper = $this->getHelperManager();
+            $ok = $helper->Iblock()->deleteIblockIfExists('products');
 
-        if ($ok) {
-            $this->outSuccess('Инфоблок удален');
-        } else {
-            $this->outError('Ошибка удаления инфоблока');
+            if ($ok) {
+                $this->outSuccess('Инфоблок удален');
+            } else {
+                $this->outError('Ошибка удаления инфоблока');
+            }
         }
     }
 }
