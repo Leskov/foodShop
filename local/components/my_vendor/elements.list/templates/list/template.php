@@ -13,21 +13,23 @@
 $this->setFrameMode(true);
 ?>
 <div class="news-list">
-
+    <?echo "<h2>" . $arResult['INFO_MESSAGE'] . "</h2>";?>
     <? foreach ($arResult["ITEMS"] as $arItem): ?>
 
         <p class="news-item" id="<?= $this->GetEditAreaId($arItem['ID']); ?>">
 
             <?
-            //определяем текущие дату и время
+            //выводим элементы по фильтру
             $currentDT = date("d.m.Y H:i:s");
-            //если текущие дата и время меньше, чем дата и время, до которых доступ активен
-            //то выводим элементы
-            if ($currentDT < $arItem["ACTIVE_TO"]) {
-                echo "<h3>" . $arItem["NAME"] . "</h3>";
-                echo "<span>" . "Доступ ативен до: " . $arItem["ACTIVE_TO"] . "</span><br/>";
-                echo "<span>" . "Сейчас : " . $currentDT . "</span><br/>";
+            echo "<h3>" . $arItem["NAME"] . "</h3>";
+            echo "<span>" . "Доступ активен до: " . $arItem["ACTIVE_TO"] . "</span><br/>";
+            echo "<span>" . "Сейчас : " . $currentDT . "</span><br/>";
+            if ($arItem["ACTIVE_TO"] > $currentDT){
+                echo "<span>Статус : <b>действует</b></span><br/>";
+            } else{
+                echo "<span>Статус : <b>просрочен</b></span><br/>";
             }
+
             ?>
         </p>
     <? endforeach; ?>

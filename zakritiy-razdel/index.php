@@ -10,8 +10,12 @@ $APPLICATION->IncludeComponent(
 		"COMPONENT_TEMPLATE" => "list",
 		"IBLOCK_CODE" => "access-to-hide-section",
 		"CACHE_TYPE" => "A",
-		"CACHE_TIME" => "3600"
+		"CACHE_TIME" => "3600",
+		"SHOW_ACTIVE" => "N",
+		"SHOW_EXPIRED" => "N"
 	),
 	false
 );
+
+
 ?><? require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php"); ?>

@@ -25,11 +25,24 @@ class ElementsList extends \CBitrixComponent
         Loader::includeModule('iblock');
 
         if($this->startResultCache()){
+            $currentDT = date("d.m.Y H:i:s");
+            //prefix "<>" - больше или меньше текущей даты, "<" - меньше т.д., ">" - больше т.д.
+            if ($arParams["SHOW_ACTIVE"] == "Y" && $arParams["SHOW_EXPIRED"] == "Y"){
+                $prefix = '<>';
+            }else if (($arParams["SHOW_ACTIVE"] == "Y" && $arParams["SHOW_EXPIRED"] == "N")){
+                $prefix = '>';
+            }
+            else if (($arParams["SHOW_ACTIVE"] == "N" && $arParams["SHOW_EXPIRED"] == "Y")){
+                $prefix = '<';
+            }
+
+
             $dbItems = CIBlockElement:: GetList(
                 [],
                 [
                     "IBLOCK_CODE" => $arParams["IBLOCK_CODE"],
                     "ACTIVE" => "Y",
+                    $prefix . "DATE_ACTIVE_TO" => $currentDT,
                 ],
                 false,
                 false,
