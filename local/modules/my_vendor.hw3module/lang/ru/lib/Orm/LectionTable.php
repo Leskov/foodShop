@@ -1,0 +1,6 @@
+<?php
+$MESS['LECTION_TABLE_FIELD_ACTIVE'] = 'Активность';
+$MESS['LECTION_TABLE_FIELD_SORT'] = 'Сортировка';
+$MESS['LECTION_TABLE_FIELD_DATE'] = 'Дата';
+$MESS['LECTION_TABLE_FIELD_LECTION_NUMBER'] = 'Номер лекции';
+$MESS['LECTION_TABLE_FIELD_LECTION_NAME'] = 'Название лекции';

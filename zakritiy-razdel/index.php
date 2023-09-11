@@ -11,8 +11,8 @@ $APPLICATION->IncludeComponent(
 		"IBLOCK_CODE" => "access-to-hide-section",
 		"CACHE_TYPE" => "A",
 		"CACHE_TIME" => "3600",
-		"SHOW_ACTIVE" => "N",
-		"SHOW_EXPIRED" => "N"
+		"SHOW_ACTIVE" => "Y",
+		"SHOW_EXPIRED" => "Y"
 	),
 	false
 );
