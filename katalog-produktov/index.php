@@ -3,7 +3,7 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Каталог продуктов");
 ?><span style="font-family: Verdana; font-size: 16pt;"> </span>
 <h3><?$APPLICATION->IncludeComponent(
-	"bitrix:news.list",
+	"bitrix:access.list",
 	"katalog-produktov",
 	Array(
 		"ACTIVE_DATE_FORMAT" => "d.m.Y",
